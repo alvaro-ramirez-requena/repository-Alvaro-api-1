@@ -4,7 +4,7 @@ dotenv.config({path: '.env'})
 
 const db = new Sequelize(process.env.BD_NOMBRE, process.env.BD_USER,process.env.BD_PASS, {
     host:process.env.BD_HOST,
-    port:5433,
+    port:process.env.BD_PORT,
     dialect:'postgres',
     pool: {
         max:5,
