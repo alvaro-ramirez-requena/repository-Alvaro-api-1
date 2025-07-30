@@ -24,7 +24,7 @@ app.use(express.json())
 
 //Habilitar cors
 app.use(cors({
-    origin:['https://repository-alvaro-api-1-production.up.railway.app/productos'],
+    origin:['https://repository-alvaro-api-1-production.up.railway.app'],
     methods:['GET', 'PUT', 'POST', 'DELETE'],
     credentials:true
 }))
