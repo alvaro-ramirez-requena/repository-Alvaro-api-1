@@ -4,7 +4,6 @@ import db from './configuration/db.js'
 import cors from 'cors'
 import './models/index.js'
 
-
 //Conexion a la base de datos
 
 try{
@@ -20,15 +19,14 @@ const app = express()
 
 //habilitar bodyParser  
 app.use(express.urlencoded({extended:true}))
+app.use(express.json())
 
 //Habilitar cors
 app.use(cors({
-    origin:['https://repository-alvaro-api-1-production.up.railway.app'],
+    origin:['http://localhost:5173'],
     methods:['GET', 'PUT', 'POST', 'DELETE'],
     credentials:true
 }))
-
-app.use(express.json())
 
 // rutas de la app
 app.use('/', ss)
