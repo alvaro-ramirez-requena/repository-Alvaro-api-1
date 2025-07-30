@@ -20,7 +20,6 @@ const app = express()
 
 //habilitar bodyParser  
 app.use(express.urlencoded({extended:true}))
-app.use(express.json())
 
 //Habilitar cors
 app.use(cors({
@@ -28,6 +27,8 @@ app.use(cors({
     methods:['GET', 'PUT', 'POST', 'DELETE'],
     credentials:true
 }))
+
+app.use(express.json())
 
 // rutas de la app
 app.use('/', ss)
