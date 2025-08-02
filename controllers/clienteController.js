@@ -7,7 +7,7 @@ const nuevoCliente = async(req,res,next) => {
         const cliente = await Cliente.create(req.body)
         res.json({mensaje: 'Se agrego nuevo cliente ', cliente})
     }catch(error){
-        res.send(error)
+        console.log(error)
         next(error)
     }
 } 
