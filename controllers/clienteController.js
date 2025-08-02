@@ -7,7 +7,7 @@ const nuevoCliente = async(req,res,next) => {
         const cliente = await Cliente.create(req.body)
         res.json({mensaje: 'Se agrego nuevo cliente ', cliente})
     }catch(error){
-        console.log(error)
+        res.send(error)
         next(error)
     }
 } 
@@ -36,7 +36,7 @@ const mostrarCliente = async(req,res,next) => {
         }
         res.json({mensaje:'No se encontro'})
     }catch(error){
-        res.send(error)
+        console.log(error)
         next(error)
     }
 }
