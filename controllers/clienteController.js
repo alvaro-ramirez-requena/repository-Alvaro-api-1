@@ -36,7 +36,7 @@ const mostrarCliente = async(req,res,next) => {
         }
         res.json({mensaje:'No se encontro'})
     }catch(error){
-        console.log(error)
+        res.send(error)
         next(error)
     }
 }
