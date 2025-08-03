@@ -55,7 +55,7 @@ const actualizarCliente = async(req,res,next)=>{
         }
         res.json({mensaje:'No se encontro el cliente'})
     }catch(error){
-        console.log(error)
+        res.send(error)
         next(error)
     }
 
