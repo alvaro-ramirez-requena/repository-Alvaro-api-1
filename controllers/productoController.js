@@ -159,7 +159,9 @@ const buscarProducto = async(req,res,next) => {
         const {query} = req.params
         const productos = await Producto.findAll({
             where:{
-                [Op.iLike]:`%${query}`
+                nombre:{
+                    [Op.iLike]:`%${query}`
+                }     
             }
         })
         res.json(productos)
