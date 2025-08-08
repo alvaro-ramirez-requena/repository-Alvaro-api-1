@@ -2,7 +2,7 @@ import Producto from "../models/Producto.js";
 import multer from "multer";
 import cloudinary from "../configuration/cloudinary.js";
 import streamifier from 'streamifier'
-
+import { Op } from "sequelize";
 
 //Configuracion del almacenamiento
 const storage = multer.memoryStorage()  
@@ -154,6 +154,20 @@ const eliminarProducto = async (req, res, next) => {
     }
 }
 
+const buscarProducto = async(req,res,next) => {
+    try{
+        const {query} = req.params
+        const productos = await Producto.findAll({
+            where:{
+                [Op.iLike]:`%${query}`
+            }
+        })
+        res.json(productos)
+    }catch(error){
+        res.send(error)
+    }
+}
+
 
 
 
@@ -164,5 +178,6 @@ export {
     mostrarProductos,
     mostrarProducto,
     actualizarProducto,
-    eliminarProducto
+    eliminarProducto,
+    buscarProducto
 }

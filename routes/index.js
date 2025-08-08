@@ -39,6 +39,9 @@ router.put('/productos/:id',subirArchivo,actualizarProducto)
 //Eliminar producto por su id
 router.delete('/productos/:id',eliminarProducto)
 
+//Busqueda de Productos
+router.post('/productos/busqueda/:query',buscarProducto)
+
 /* Pedidos */
 
 
