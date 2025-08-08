@@ -1,6 +1,6 @@
 import express from 'express'
 import { nuevoCliente,mostrarClientes,mostrarCliente,actualizarCliente,eliminarCliente } from '../controllers/clienteController.js'
-import { nuevoProducto,subirArchivo, mostrarProductos,mostrarProducto, actualizarProducto, eliminarProducto } from '../controllers/productoController.js'
+import { nuevoProducto,subirArchivo, mostrarProductos,mostrarProducto, actualizarProducto, eliminarProducto, buscarProducto } from '../controllers/productoController.js'
 import { nuevoPedido, obtenerPedidos,mostrarPedido, actualizarPedido,eliminarPedido } from '../controllers/pedidoController.js'
 
 const router = express.Router()
@@ -40,7 +40,7 @@ router.put('/productos/:id',subirArchivo,actualizarProducto)
 router.delete('/productos/:id',eliminarProducto)
 
 //Busqueda de Productos
-router.post('/productos/busqueda/:query',buscarProducto)
+router.get('/productos/busqueda/:query',buscarProducto)
 
 /* Pedidos */
 
