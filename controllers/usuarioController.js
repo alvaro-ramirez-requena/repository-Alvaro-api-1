@@ -2,16 +2,14 @@ import Usuario from "../models/Usuario.js"
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
-const registrarUsuario = async (req, res, next) => {
-
-    try {
-        const usuario = await Usuario.create(req.body)
+const registrarUsuario = async (req, res) => {
+    const usuario = await Usuario.create(req.body)
         usuario.password = await bcrypt.hash(req.body.password, 12)
+    try {
         await usuario.save()
         res.json({ mensaje: "Usuario creado correctamente" })
     } catch (error) {
         res.send(error)
-        next(error)
     }
 }
 
