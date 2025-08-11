@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken'
 
 const registrarUsuario = async (req, res) => {
     const usuario = await Usuario.create(req.body)
-        usuario.password = await bcrypt.hash(req.body.password, 12)
+    usuario.password = await bcrypt.hash(req.body.password, 12)
     try {
         await usuario.save()
         res.json({ mensaje: "Usuario creado correctamente" })
@@ -16,6 +16,7 @@ const registrarUsuario = async (req, res) => {
 const autenticarUsuario = async (req, res) => {
     const { email, password } = req.body
     const usuario = await Usuario.findOne({ email })
+    res.json(usuario)
     if (usuario) {
         if (!bcrypt.compareSync(password, usuario.password)) {
             await res.status(401).json({ mensaje: 'Password Incorrecto' })
