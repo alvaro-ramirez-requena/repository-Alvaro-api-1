@@ -1,5 +1,6 @@
 import Usuario from "../models/Usuario.js"
 import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 
 const registrarUsuario = async(req, res) => {
     const usuario = await Usuario.create(req.body)
