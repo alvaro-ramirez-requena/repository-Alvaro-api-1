@@ -21,7 +21,8 @@ const autenticarUsuario = async (req, res) => {
     
     if (usuario) {
         if (!bcrypt.compareSync(password, usuario.password)) {
-            await res.status(401).json({ mensaje: 'Password Incorrecto' })
+            // await res.status(401).json({ mensaje: 'Password Incorrecto' })
+            res.json({mensaje:"password incorrecto"})
         } else {
             const token = jwt.sign({
                 email: usuario.email,
