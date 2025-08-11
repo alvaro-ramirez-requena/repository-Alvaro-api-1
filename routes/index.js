@@ -2,6 +2,7 @@ import express from 'express'
 import { nuevoCliente,mostrarClientes,mostrarCliente,actualizarCliente,eliminarCliente } from '../controllers/clienteController.js'
 import { nuevoProducto,subirArchivo, mostrarProductos,mostrarProducto, actualizarProducto, eliminarProducto, buscarProducto } from '../controllers/productoController.js'
 import { nuevoPedido, obtenerPedidos,mostrarPedido, actualizarPedido,eliminarPedido } from '../controllers/pedidoController.js'
+import { autenticarUsuario, registrarUsuario } from '../controllers/usuarioController.js'
 
 const router = express.Router()
 
@@ -59,6 +60,11 @@ router.put('/pedidos/:id', actualizarPedido)
 
 //Eliminar un pedido por su id
 router.delete('/pedidos/:id', eliminarPedido)
+
+//Usuarios
+router.post('/crear-cuenta', registrarUsuario)
+
+router.post('/iniciar-sesion', autenticarUsuario)
 
 
 
