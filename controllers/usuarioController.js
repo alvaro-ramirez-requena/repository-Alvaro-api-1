@@ -15,8 +15,10 @@ const registrarUsuario = async (req, res) => {
 
 const autenticarUsuario = async (req, res) => {
     const { email, password } = req.body
-    const usuario = await Usuario.findOne({ email })
-    res.json(usuario)
+    const usuario = await Usuario.findOne({ 
+        where:{email}
+     })
+    
     if (usuario) {
         if (!bcrypt.compareSync(password, usuario.password)) {
             await res.status(401).json({ mensaje: 'Password Incorrecto' })
