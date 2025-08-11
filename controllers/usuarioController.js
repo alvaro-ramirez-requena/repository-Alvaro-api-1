@@ -21,8 +21,8 @@ const autenticarUsuario = async (req, res) => {
     
     if (usuario) {
         if (!bcrypt.compareSync(password, usuario.password)) {
-            // await res.status(401).json({ mensaje: 'Password Incorrecto' })
-            res.json({mensaje:"password incorrecto"})
+            await res.status(401).json({ mensaje: 'Password Incorrecto' })
+            // res.json({mensaje:"password incorrecto"})
         } else {
             const token = jwt.sign({
                 email: usuario.email,
@@ -37,8 +37,8 @@ const autenticarUsuario = async (req, res) => {
             res.json({ token })
         }
     } else {
-        // await res.status(401).json({ mensaje: 'Ese usuario no existe' })
-        res.json({mensaje:"Ese usuario no existe"})
+        await res.status(401).json({ mensaje: 'Ese usuario no existe' })
+        // res.json({mensaje:"Ese usuario no existe"})
     }
 }
 
