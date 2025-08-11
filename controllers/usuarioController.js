@@ -36,8 +36,7 @@ const autenticarUsuario = async (req, res) => {
             res.json({ token })
         }
     } else {
-        // await res.status(401).json({ mensaje: 'Ese usuario no existe' })
-        console.log('error')
+        await res.status(401).json({ mensaje: 'Ese usuario no existe' })
     }
 }
 
