@@ -10,7 +10,6 @@ const registrarUsuario = async (req, res) => {
         await usuario.save()
         res.json({ mensaje: "Usuario creado correctamente" })
     } catch (error) {
-        console.log(error)
         res.send({ mensaje: 'hubo un error' })
     }
 }
