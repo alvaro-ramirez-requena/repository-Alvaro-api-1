@@ -11,7 +11,7 @@ const registrarUsuario = async (req, res) => {
         res.json({ mensaje: "Usuario creado correctamente" })
     } catch (error) {
         console.log(error)
-        res.render({ mensaje: 'hubo un error' })
+        res.send({ mensaje: 'hubo un error' })
     }
 }
 
