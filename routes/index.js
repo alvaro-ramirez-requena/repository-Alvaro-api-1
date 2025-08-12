@@ -4,13 +4,15 @@ import { nuevoProducto,subirArchivo, mostrarProductos,mostrarProducto, actualiza
 import { nuevoPedido, obtenerPedidos,mostrarPedido, actualizarPedido,eliminarPedido } from '../controllers/pedidoController.js'
 import { autenticarUsuario, registrarUsuario } from '../controllers/usuarioController.js'
 
+import security from '../middleware/auth.js'
+
 const router = express.Router()
 
 //Agrega nuevos clientes via POST
 router.post('/clientes', nuevoCliente)
 
 //Obtener todos los clientes
-router.get('/clientes', mostrarClientes)
+router.get('/clientes',security, mostrarClientes)
 
 //Muestra un cliente en especifico (id)
 router.get('/clientes/:id',  mostrarCliente )
