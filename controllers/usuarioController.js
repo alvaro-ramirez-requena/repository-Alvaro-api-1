@@ -18,32 +18,30 @@ const autenticarUsuario = async (req, res) => {
     const usuario = await Usuario.findOne({
         where: { email }
     })
-    try {
-        if (usuario) {
-            if (!bcrypt.compareSync(password, usuario.password)) {
-                await res.status(401).json({ mensaje: 'Password Incorrecto' })
-                // res.json({mensaje:"password incorrecto"})
-            } else {
-                const token = jwt.sign({
-                    email: usuario.email,
-                    nombre: usuario.nombre,
-                    id: usuario.id
-                },
-                    'KEYSECRET',
-                    {
-                        expiresIn: '2h'
-                    })
 
-                res.json({ token })
-            }
+    if (usuario) {
+        if (!bcrypt.compareSync(password, usuario.password)) {
+            await res.status(401).json({ mensaje: 'Password Incorrecto' })
+            // res.json({mensaje:"password incorrecto"})
         } else {
-            await res.status(401).json({ mensaje: 'Ese usuario no existe' })
-            // res.json({mensaje:"Ese usuario no existe"})
-        }
+            const token = jwt.sign({
+                email: usuario.email,
+                nombre: usuario.nombre,
+                id: usuario.id
+            },
+                'KEYSECRET',
+                {
+                    expiresIn: '2h'
+                })
 
-    } catch (error) {
-        res.send(error)
+            res.json({ token })
+        }
+    } else {
+        await res.status(401).json({ mensaje: 'Ese usuario no existe' })
+        // res.json({mensaje:"Ese usuario no existe"})
     }
+
+
 }
 
 export {
