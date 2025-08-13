@@ -64,7 +64,7 @@ router.put('/pedidos/:id', security,actualizarPedido)
 router.delete('/pedidos/:id', security,eliminarPedido)
 
 //Usuarios
-router.post('/crear-cuenta', registrarUsuario)
+router.post('/crear-cuenta', security,registrarUsuario)
 
 router.post('/iniciar-sesion',autenticarUsuario)
 
