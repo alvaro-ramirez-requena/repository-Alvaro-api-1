@@ -20,27 +20,34 @@ const app = express()
 //habilitar bodyParser  
 app.use(express.urlencoded({extended:true}))
 
-const whiteList = ['http://localhost:5173']
+// const whiteList = ['http://localhost:5173']
 
-const corsOptions =  {
-    origin:(origin, callback) => {
-        console.log(origin)
+// const corsOptions =  {
+//     origin:(origin, callback) => {
+//         console.log(origin)
 
-        const existe = whiteList.some(dominio => dominio === origin)
-        if(existe){
-            callback(null, true)
-        }else{
-            callback(new Error('No permitido por CORS'))
-        }
-    },
-    methods:['GET', 'PUT', 'POST', 'DELETE'],
-    credentials:true
-}
+//         const existe = whiteList.some(dominio => dominio === origin)
+//         if(existe){
+//             callback(null, true)
+//         }else{
+//             callback(new Error('No permitido por CORS'))
+//         }
+//     },
+//     methods:['GET', 'PUT', 'POST', 'DELETE'],
+//     credentials:true
+// }
 
 
 
 //Habilitar cors
-app.use(cors(corsOptions))
+// app.use(cors(corsOptions))
+
+app.use(cors({
+    origin:['http://localhost:5173'],
+    methods:['GET', 'PUT', 'POST', 'DELETE'],
+    credentials:true
+}))
+
 
 app.use(express.json())
 
