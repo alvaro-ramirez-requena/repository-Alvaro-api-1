@@ -66,7 +66,7 @@ router.delete('/pedidos/:id', security,eliminarPedido)
 //Usuarios
 router.post('/crear-cuenta', registrarUsuario)
 
-router.post('/iniciar-sesion', security,autenticarUsuario)
+router.post('/iniciar-sesion',autenticarUsuario)
 
 
 
